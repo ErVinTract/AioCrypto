@@ -9,7 +9,7 @@ this_directory = path.abspath(path.dirname(__file__))
 setup(
     name='AioCrypto',
     description='Async Crypto API for humans',
-    version='1.0.2',
+    version='1.0.3',
     url='https://github.com/ErVinTract/AioCrypto',
     author='ErVinTract',
     author_email='ErVinTrac@gmail.com',

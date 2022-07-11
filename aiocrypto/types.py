@@ -55,9 +55,9 @@ class Invoice:
     amount: str
     pay_url: str
     created_at: str
-    allow_comments: bool
-    allow_anonymous: bool
-    paid_anonymously: bool
+    allow_comments: Optional[bool] = None
+    allow_anonymous: Optional[bool] = None
+    paid_anonymously: Optional[bool] = None
     description: Optional[str] = None
     expiration_date: Optional[str] = None
     paid_at: Optional[str] = None
