@@ -54,13 +54,13 @@ class Invoice:
     asset: str
     amount: str
     pay_url: str
-    description: Optional[str] = None
     created_at: str
     allow_comments: bool
     allow_anonymous: bool
+    paid_anonymously: bool
+    description: Optional[str] = None
     expiration_date: Optional[str] = None
     paid_at: Optional[str] = None
-    paid_anonymously: bool
     comment: Optional[str] = None
     hidden_message: Optional[str] = None
     payload: Optional[str] = None
@@ -90,7 +90,7 @@ class Transfer:
     amount: str
     status: str
     completed_at: str
-    comment: Optional[str]
+    comment: Optional[str] = None
 
 
 @dataclass
@@ -127,13 +127,6 @@ class PaidButtonNames:
 class Hostnames:
     MAIN_NET: str = 'https://pay.crypt.bot'
     TEST_NET: str = 'https://testnet-pay.crypt.bot'
-
-
-@dataclass
-class InvoiceStatus:
-    active: str = 'active'
-    paid: str = 'paid'
-
 
 @dataclass
 class App:

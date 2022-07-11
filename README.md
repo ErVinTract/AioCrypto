@@ -17,7 +17,6 @@ pip install AioCrypto
 ```python
 
 from AioCrypto import CryptoApi
-import asyncio
 
 async def main():
 

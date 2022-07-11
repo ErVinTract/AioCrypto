@@ -183,7 +183,7 @@ class CryptoApi():
             data__json = await response.json()
             self._raise(response=data__json)
 
-            return [Invoice(**invoice) for invoice in data__json['result']]
+            return [Invoice(**invoice) for invoice in data__json['result']['items']]
 
     async def get_exchange_rates(self) -> List[ExchangeRate]:
         """
