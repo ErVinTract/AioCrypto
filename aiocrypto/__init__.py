@@ -7,8 +7,8 @@ __description__ = "Async Crypto API for humans"
 
 __github__ = "https://github.com/ErVinTract/AioCrypto"
 
-__release__ = "1.0"
-__version__ = "1.0b"
+__release__ = "1.0.1"
+__version__ = "1.0.1b"
 
 
 

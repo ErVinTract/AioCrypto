@@ -54,18 +54,18 @@ class Invoice:
     asset: str
     amount: str
     pay_url: str
-    Uescription: str
+    description: Optional[str] = None
     created_at: str
     allow_comments: bool
     allow_anonymous: bool
-    expiration_date: str
-    paid_at: str
+    expiration_date: Optional[str] = None
+    paid_at: Optional[str] = None
     paid_anonymously: bool
-    comment: str
-    hidden_message: str
-    payload: str
-    paid_btn_name: str
-    paid_btn_url: str
+    comment: Optional[str] = None
+    hidden_message: Optional[str] = None
+    payload: Optional[str] = None
+    paid_btn_name: Optional[str] = None
+    paid_btn_url: Optional[str] = None
 
 
 @dataclass
@@ -90,7 +90,7 @@ class Transfer:
     amount: str
     status: str
     completed_at: str
-    comment: str
+    comment: Optional[str]
 
 
 @dataclass
