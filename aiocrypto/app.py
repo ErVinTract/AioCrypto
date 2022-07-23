@@ -3,10 +3,10 @@ from aiocrypto.types import Hostnames
 
 from aiohttp import ClientSession
 
-from typing import List
+from typing import List, Union
 
 
-class CryptoApi():
+class CryptoApi:
     def __init__(self, token=None, hostname: str = Hostnames.MAIN_NET) -> None:
         """
         ### Init CryptoPay api
@@ -65,7 +65,7 @@ class CryptoApi():
     async def create_invoice(self,
                              asset: str,
                              amount: float,
-                             **kwargs: str | bool | int):
+                             **kwargs: Union[str, bool, int]):
         """
         ### About
 
@@ -111,7 +111,7 @@ class CryptoApi():
 
             return data__json['result']
 
-    async def transfer(self, user_id: int, asset: str, amount: float | str, spend_id: str, **kwargs) -> Transfer:
+    async def transfer(self, user_id: int, asset: str, amount: Union[float, str], spend_id: str, **kwargs) -> Transfer:
         """
         ### About
 
