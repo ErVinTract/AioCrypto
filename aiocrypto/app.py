@@ -238,4 +238,4 @@ class CryptoApi():
 
         """
         await self._client.close()
-        return "Succes!"
+        return "Success!"
