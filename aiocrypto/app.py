@@ -65,7 +65,7 @@ class CryptoApi():
     async def create_invoice(self,
                              asset: str,
                              amount: float,
-                             **kwargs: str | bool | int):
+                             **kwargs):
         """
         ### About
 
