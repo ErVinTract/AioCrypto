@@ -3,7 +3,7 @@ from aiocrypto.types import Hostnames
 
 from aiohttp import ClientSession
 
-from typing import List
+from typing import List, Union
 
 
 class CryptoApi():
@@ -65,7 +65,7 @@ class CryptoApi():
     async def create_invoice(self,
                              asset: str,
                              amount: float,
-                             **kwargs):
+                             **kwargs: Union[str, bool, int]):
         """
         ### About
 
