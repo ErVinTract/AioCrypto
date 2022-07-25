@@ -7,7 +7,7 @@ from typing import List, Union
 
 
 class CryptoApi:
-    def __init__(self, token=None, hostname: str = Hostnames.MAIN_NET) -> None:
+    def __init__(self, token, hostname: str = Hostnames.MAIN_NET) -> None:
         """
         ### Init CryptoPay api
 
