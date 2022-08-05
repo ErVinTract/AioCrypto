@@ -128,8 +128,10 @@ class Hostnames:
     MAIN_NET: str = 'https://pay.crypt.bot'
     TEST_NET: str = 'https://testnet-pay.crypt.bot'
 
+        
 @dataclass
 class App:
     app_id: int
     name: str
     payment_processing_bot_username: str
+
