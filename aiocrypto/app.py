@@ -1,9 +1,9 @@
 from aiocrypto import App, Invoice, Balance, Currency, Transfer, ExchangeRate, Unauthorized, __release__
-from aiocrypto.types import Hostnames
+from aiocrypto.types import Hostnames, Assets
 
 from aiohttp import ClientSession
 
-from typing import List, Union
+from typing import List, Union, Optional
 
 
 class CryptoApi:
@@ -43,6 +43,14 @@ class CryptoApi:
                     response['error']['code'], response['error']['name'])
             else:
                 raise response
+
+    @classmethod
+    def _validate_asset(cls, asset):
+        assert asset in Assets.__annotations__.keys()
+
+    @classmethod
+    def _clear_dict(cls, dict_: dict):
+        return {key: value for key, value in dict_.items() if value is not None}
 
     async def get_me(self) -> App:
         """
@@ -166,7 +174,14 @@ class CryptoApi:
 
             return [Balance(**balance) for balance in data__json['result']]
 
-    async def get_invoices(self) -> List[Invoice]:
+    async def get_invoices(
+            self,
+            asset: Optional[str] = None,
+            invoice_ids: Optional[List[Union[str, int]]] = None,
+            status: Optional[str] = None,
+            offset: Optional[int] = None,
+            count: Optional[int] = None
+    ) -> List[Invoice]:
         """
         ### About
 
@@ -178,8 +193,14 @@ class CryptoApi:
             - Invoice: list[Invoice]
 
         """
+        if asset is not None:
+            self._validate_asset(asset)
 
-        async with self._client.get(url='/api/getInvoices') as response:
+        if invoice_ids is not None:
+            invoice_ids = ",".join(map(str, invoice_ids))
+
+        params = {"asset": asset, "invoice_ids": invoice_ids, "status": status, "offset": offset, "count": count}
+        async with self._client.get(url='/api/getInvoices', params=self._clear_dict(params)) as response:
             data__json = await response.json()
             self._raise(response=data__json)
 

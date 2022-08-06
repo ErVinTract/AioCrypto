@@ -135,3 +135,7 @@ class App:
     name: str
     payment_processing_bot_username: str
 
+@dataclass
+class Status:
+    active: str = "active"
+    paid: str = "paid"
