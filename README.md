@@ -67,4 +67,4 @@ You can find more examples in [`examples/`](https://github.com/ErVinTract/AioCry
 - Community: [@CryptoBotRussian](https://t.me/CryptoBotRussian)
 - Pip: [AioCrypto](https://pypi.python.org/pypi/AioCrypto)
 - Source: [Github repo](https://github.com/ErVinTract/AioCrypto)
-- Issues/Bug tracker: [Github issues tracker](https://github.com/ErVinTract/AioCrypto/issues>)
+- Issues/Bug tracker: [Github issues tracker](https://github.com/ErVinTract/AioCrypto/issues)
