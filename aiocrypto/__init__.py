@@ -14,3 +14,4 @@ __version__ = "1.0.3b"
 from .Errors import *
 from .types import *
 from .app import *
+from . import errors as Errors  # Maintaining backward compatibility
