@@ -4,7 +4,7 @@
 [![PyPi Package Version](https://img.shields.io/pypi/v/aiocrypto.svg?style=flat)](https://pypi.python.org/pypi/AioCrypto)
 [![Downloads](https://img.shields.io/pypi/dm/aiocrypto.svg?style=flat)](https://pypi.python.org/pypi/pycoingate)
 [![Supported python versions](https://img.shields.io/pypi/pyversions/aiocrypto.svg?style=flat)](https://pypi.python.org/pypi/aiocrypto)
-[![CoinGate API](https://img.shields.io/badge/AioCrypto-1.1.1-green.svg?style=flat)](https://developer.coingate.com/v2/docs/)
+[![Crypto API](https://img.shields.io/badge/AioCrypto-1.1.1-green.svg?style=flat)](https://developer.coingate.com/v2/docs/)
 [![Github issues](https://img.shields.io/github/issues/ErVinTract/AioCrypto.svg?style=flat-square)](https://github.com/ErVinTracst/PyCoingate/issues)
 [![MIT License](https://img.shields.io/pypi/l/aiocrypto.svg?style=flat-square)](https://opensource.org/licenses/Apache-2.0)
 
