@@ -82,7 +82,7 @@ class CryptoApi:
 
         Params
         -------
-            - asset (String): Supported assets: “BTC”, “TON”, “ETH” (testnet only), “USDT”, “USDC” and “BUSD”.
+            - asset (String): Supported assets: “BTC”, “TON”, “ETH”, “USDT”, “USDC” and “BUSD”.
             - amount (Float)
             - description (String): Optional. Description for the invoice. User will see this description when they pay the invoice. Up to 1024 characters.
             - hidden_message (String): Optional. Text of the message that will be shown to a user after the invoice is paid. Up to 2048 characters.
