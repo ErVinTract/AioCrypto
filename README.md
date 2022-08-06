@@ -17,7 +17,7 @@
  
 **Few steps before getting started...**
 
-- Install latest stable version of pycoingate, simply running `pip install AioCrypto`
+- Install latest stable version of aiocrypto, simply running `pip install AioCrypto`
     
 ###  - Get me
 
