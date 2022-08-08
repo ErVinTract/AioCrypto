@@ -48,7 +48,7 @@ setup(
     author_email='ErVinTract@gmail.com',
     description='Async Crypto API for humans',
     long_description=get_description(),
-    long_description_content_type="text/markdown",
+    long_description_content_type="text/x-rst",
     classifiers=[
         'Development Status :: 1',
         'Environment :: Console',
