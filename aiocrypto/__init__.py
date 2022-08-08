@@ -7,8 +7,8 @@ __description__ = "Async Crypto API for humans"
 
 __github__ = "https://github.com/ErVinTract/AioCrypto"
 
-__release__ = "1.0.3"
-__version__ = "1.0.3b"
+__version__ = '1.0.4'
+__release__ = "1.1b"
 
 
 from .Errors import *
