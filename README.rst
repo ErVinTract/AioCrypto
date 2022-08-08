@@ -32,8 +32,7 @@ AioCrypto
 
 **AioCrypto** is a fairly simple and convenient library for working with the `Crypto API <https://help.crypt.bot/crypto-pay-api>`_, written in Python 3.8 with `asyncio <https://docs.python.org/3/library/asyncio.html>`_ and `aiohttp <https://github.com/aio-libs/aiohttp>`_.
 
-Official aiocrypto resources
---------------------------
+**Official aiocrypto resources**
 
 - News: `@CryptoBotRu <https://t.me/CryptoBotRU>`_
 - Community: `@CryptoBotRussian <https://t.me/CryptoBotRussian>`_
