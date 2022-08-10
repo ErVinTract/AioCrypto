@@ -45,7 +45,7 @@ async def main():
 
 ### - Create Invoice 
 
-```
+```python
 from aiocrypto import CryptoApi
 
 async def main():
