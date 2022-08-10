@@ -14,18 +14,18 @@ class CryptoApi:
         * async class CryptoApi
 
         ### Args:
-            token (str): [CryptoPay api token from @CryptoBot or @CryptoTestnetBot]
+            token (str): CryptoPay api token from @CryptoBot or @CryptoTestnetBot
 
-            hostname (str, optional): [Api endpoint hostname]. Defaults to Hostnames.MAIN_NET.
+            hostname (str, optional): Api endpoint hostname. Defaults to Hostnames.MAIN_NET.
 
-            delay (int, optional): [Not implemented, wait for version 1.2b]. Default is a zero
+            delay (int, optional): Not implemented, wait for version 1.2, zero by default
         """
 
         self._token = token
         self._hostname = hostname
         self._client: ClientSession = ClientSession(
             base_url=self._hostname, headers={
-                'Crypto-Pay-API-Token': self._token, 'user-agent': f'AioCrypto alpha {__version__}', }
+                'Crypto-Pay-API-Token': self._token, 'user-agent': f'AioCrypto Stable {__version__}', }
         )
 
     def _raise(self, response: dict) -> Exception:
@@ -129,7 +129,7 @@ class CryptoApi:
         Params
         -------
             - user_id (Number): Telegram user ID. User must have previously used @CryptoBot (@CryptoTestnetBot for testnet).
-            - asset (String): Currency code. Supported assets: “BTC”, “TON”, “ETH” (testnet only), “USDT”, “USDC” and “BUSD”.
+            - asset (String): Currency code. Supported assets: “BTC”, “TON”, “ETH”, “USDT”, “USDC” and “BUSD”.
             - amount (String): Amount of the transfer in float. The minimum and maximum amounts for each of the support asset roughly correspond to the limit of 1-25000 USD. Use getExchangeRates to convert amounts. For example: 125.50
             - spend_id (String): Unique ID to make your request idempotent and ensure that only one of the transfers with the same spend_id is accepted from your app. This parameter is useful when the transfer should be retried (i.e. request timeout, connection reset, 500 HTTP status, etc). Up to 64 symbols.
             - comment (String): Optional. Comment for the transfer. Users will see this comment when they receive a notification about the transfer. Up to 1024 symbols.
@@ -162,10 +162,11 @@ class CryptoApi:
 
         Use this method to check your balance. Requires no parameters.
             If successful, returns information about the balance of the connected application.
+            - Supported assets: “BTC”, “TON”, “ETH”, “USDT”, “USDC” and “BUSD”.
 
         Returns
         --------
-            - Balance: list[Balance]
+            - list[Balance]: Balance list object
         """
 
         async with self._client.get(url='/api/getBalance') as response:
@@ -186,11 +187,11 @@ class CryptoApi:
         ### About
 
         Use this method to view active invoices.
-            If successful, returns a sheet with information about all invoices.
+            If successful, returns a sheet with information about all specified invoices.
 
         Returns
         --------
-            - Invoice: list[Invoice]
+            - list[Invoice]: Invoice list object
 
         """
         if asset is not None:
@@ -215,13 +216,13 @@ class CryptoApi:
 
         Returns:
         --------
-            - List[ExchangeRate]: list[ExchangeRate]
+            - List[ExchangeRate]: ExchangeRate list object
         """
         async with self._client.get(url='/api/getExchangeRates') as response:
             resp = await response.json()
             self._raise(response=resp)
 
-            return [ExchangeRate(**exchange_rates) for exchange_rates in resp['result']]
+            return [ExchangeRate(**rate) for rate in resp['result']]
 
     async def get_currencies(self) -> List[Currency]:
         """
@@ -232,7 +233,7 @@ class CryptoApi:
 
         Returns:
         --------
-            - List[Currency]: [Currency list object]
+            - List[Currency]: Currency list object
         """
 
         async with self._client.get(url='/api/getCurrencies') as response:
@@ -242,21 +243,8 @@ class CryptoApi:
             return [Currency(**currency) for currency in resp['result']]
 
     async def close(self) -> str:
-        """### Close client session
-
-        Example
-        -------
-
-        ```python
-        from aiocrypto import CryptoApi
-        from aiocrypto.types import Hostnames
-
-        api = CryptoApi(token="", hostname=Hostnames.TEST_NET)
-
-        me = await api.getMe()
-        print(me)
-        await api.close()
-
+        """
+        ### Close client session
         """
         await self._client.close()
         return "Success!"
