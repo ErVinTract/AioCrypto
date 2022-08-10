@@ -1,4 +1,4 @@
-ц#!/usr/bin/env python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import re
@@ -50,7 +50,7 @@ setup(
     long_description=get_description(),
     long_description_content_type="text/x-rst",
     classifiers=[
-        'Development Status :: 1 - Production/Stable',
+        'Development Status :: 1 - Alpha',
         'Environment :: Console',
         'Framework :: AsyncIO',
         'Intended Audience :: Developers',
