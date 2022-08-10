@@ -58,7 +58,6 @@ setup(
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
-        'Topic :: Software Development :: Libraries :: Application Wrapper API',
     ],
     install_requires=[
         'aiohttp>=3.8.0,<3.9.0',
