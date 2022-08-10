@@ -50,7 +50,7 @@ setup(
     long_description=get_description(),
     long_description_content_type="text/x-rst",
     classifiers=[
-        'Development Status :: 1 - Production/Stable',
+        'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
         'Framework :: AsyncIO',
         'Intended Audience :: Developers',
