@@ -1,4 +1,4 @@
-from aiocrypto import App, Invoice, Balance, Currency, Transfer, ExchangeRate, Unauthorized, __release__
+from aiocrypto import App, Invoice, Balance, Currency, Transfer, ExchangeRate, Unauthorized, __version__
 from aiocrypto.types import Hostnames, Assets
 
 from aiohttp import ClientSession
@@ -18,14 +18,14 @@ class CryptoApi:
 
             hostname (str, optional): [Api endpoint hostname]. Defaults to Hostnames.MAIN_NET.
 
-            delay (int, optional): [Not implemented, wait for version 0.2b]. Default is a 1
+            delay (int, optional): [Not implemented, wait for version 1.2b]. Default is a zero
         """
 
         self._token = token
         self._hostname = hostname
         self._client: ClientSession = ClientSession(
             base_url=self._hostname, headers={
-                'Crypto-Pay-API-Token': self._token, 'user-agent': f'AioCrypto alpha {__release__}', }
+                'Crypto-Pay-API-Token': self._token, 'user-agent': f'AioCrypto alpha {__version__}', }
         )
 
     def _raise(self, response: dict) -> Exception:
@@ -65,10 +65,10 @@ class CryptoApi:
         """
 
         async with self._client.get(url='/api/getMe') as response:
-            data__json = await response.json()
-            self._raise(response=data__json)
+            resp = await response.json()
+            self._raise(response=resp)
 
-            return App(**data__json['result'])
+            return App(**resp['result'])
 
     async def create_invoice(self,
                              asset: str,
@@ -114,10 +114,10 @@ class CryptoApi:
         data['amount'] = amount
 
         async with self._client.get(url="/api/createInvoice", data=data) as response:
-            data__json = await response.json()
-            self._raise(response=data__json)
+            resp = await response.json()
+            self._raise(response=resp)
 
-            return data__json['result']
+            return resp['result']
 
     async def transfer(self, user_id: int, asset: str, amount: Union[float, str], spend_id: str, **kwargs) -> Transfer:
         """
@@ -151,10 +151,10 @@ class CryptoApi:
         data['spend_id'] = spend_id
 
         async with self._client.get(url='/api/transfer', data=data) as response:
-            data__json = await response.json()
-            self._raise(response=data__json)
+            resp = await response.json()
+            self._raise(response=resp)
 
-            return Transfer(**data__json['result'])
+            return Transfer(**resp['result'])
 
     async def get_balance(self) -> List[Balance]:
         """
@@ -169,10 +169,10 @@ class CryptoApi:
         """
 
         async with self._client.get(url='/api/getBalance') as response:
-            data__json = await response.json()
-            self._raise(response=data__json)
+            resp = await response.json()
+            self._raise(response=resp)
 
-            return [Balance(**balance) for balance in data__json['result']]
+            return [Balance(**balance) for balance in resp['result']]
 
     async def get_invoices(
             self,
@@ -201,10 +201,10 @@ class CryptoApi:
 
         params = {"asset": asset, "invoice_ids": invoice_ids, "status": status, "offset": offset, "count": count}
         async with self._client.get(url='/api/getInvoices', params=self._clear_dict(params)) as response:
-            data__json = await response.json()
-            self._raise(response=data__json)
+            resp = await response.json()
+            self._raise(response=resp)
 
-            return [Invoice(**invoice) for invoice in data__json['result']['items']]
+            return [Invoice(**invoice) for invoice in resp['result']['items']]
 
     async def get_exchange_rates(self) -> List[ExchangeRate]:
         """
@@ -218,10 +218,10 @@ class CryptoApi:
             - List[ExchangeRate]: list[ExchangeRate]
         """
         async with self._client.get(url='/api/getExchangeRates') as response:
-            data__json = await response.json()
-            self._raise(response=data__json)
+            resp = await response.json()
+            self._raise(response=resp)
 
-            return [ExchangeRate(**exchange_rates) for exchange_rates in data__json['result']]
+            return [ExchangeRate(**exchange_rates) for exchange_rates in resp['result']]
 
     async def get_currencies(self) -> List[Currency]:
         """
@@ -236,10 +236,10 @@ class CryptoApi:
         """
 
         async with self._client.get(url='/api/getCurrencies') as response:
-            data__json = await response.json()
-            self._raise(response=data__json)
+            resp = await response.json()
+            self._raise(response=resp)
 
-            return [Currency(**currency) for currency in data__json['result']]
+            return [Currency(**currency) for currency in resp['result']]
 
     async def close(self) -> str:
         """### Close client session
