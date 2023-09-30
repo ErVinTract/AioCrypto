@@ -82,7 +82,7 @@ class CryptoApi:
 
         Params
         -------
-            - asset (String): Supported assets: “BTC”, “TON”, “ETH”, “USDT”, “USDC” and “BUSD”.
+            - asset (String): Supported assets: “BTC”, “TON”, “ETH”, “USDT”, “USDC”.
             - amount (Float)
             - description (String): Optional. Description for the invoice. User will see this description when they pay the invoice. Up to 1024 characters.
             - hidden_message (String): Optional. Text of the message that will be shown to a user after the invoice is paid. Up to 2048 characters.
@@ -129,7 +129,7 @@ class CryptoApi:
         Params
         -------
             - user_id (Number): Telegram user ID. User must have previously used @CryptoBot (@CryptoTestnetBot for testnet).
-            - asset (String): Currency code. Supported assets: “BTC”, “TON”, “ETH”, “USDT”, “USDC” and “BUSD”.
+            - asset (String): Currency code. Supported assets: “BTC”, “TON”, “ETH”, “USDT”, “USDC”.
             - amount (String): Amount of the transfer in float. The minimum and maximum amounts for each of the support asset roughly correspond to the limit of 1-25000 USD. Use getExchangeRates to convert amounts. For example: 125.50
             - spend_id (String): Unique ID to make your request idempotent and ensure that only one of the transfers with the same spend_id is accepted from your app. This parameter is useful when the transfer should be retried (i.e. request timeout, connection reset, 500 HTTP status, etc). Up to 64 symbols.
             - comment (String): Optional. Comment for the transfer. Users will see this comment when they receive a notification about the transfer. Up to 1024 symbols.
@@ -150,11 +150,8 @@ class CryptoApi:
         data['amount'] = amount
         data['spend_id'] = spend_id
 
-        async with self._client.get(url='/api/transfer', data=data) as response:
+        async with self._client.post(url='/api/transfer', data=data) as response:
             resp = await response.json()
-            self._raise(response=resp)
-
-            return Transfer(**resp['result'])
 
     async def get_balance(self) -> List[Balance]:
         """
