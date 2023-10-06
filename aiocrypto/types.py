@@ -9,7 +9,6 @@ class Assets:
     ETH: str = 'ETH'
     USDT: str = 'USDT'
     USDC: str = 'USDC'
-    BUSD: str = 'BUSD'
 
 
 @dataclass
@@ -31,7 +30,7 @@ class Invoice:
     * invoice_id       - Unique ID for this invoice. 
     * status           - Status of the invoice, can be either “active”, “paid” or “expired”.
     * hash             - Hash of the invoice.
-    * asset            - Currency code. Currently, can be “BTC”, “TON”, “ETH” (testnet only), “USDT”, “USDC” or “BUSD”.
+    * asset            - Currency code. Currently, can be “BTC”, “TON”, “ETH” (testnet only), “USDT”, “USDC”.
     * amount           - Amount of the invoice.
     * pay_url          - URL should be presented to the user to pay the invoice.
     * description      - Optional. Description for this invoice.
@@ -77,7 +76,7 @@ class Transfer:
     ----------
     * transfer_id  - Unique ID for this transfer.
     * user_id:     - Telegram user ID the transfer was sent to.
-    * asset        - Currency code. Currently, can be “BTC”, “TON”, “ETH” (testnet only), “USDT”, “USDC” or “BUSD”.
+    * asset        - Currency code. Currently, can be “BTC”, “TON”, “ETH” (testnet only), “USDT”, “USDC”.
     * amount       - Amount of the transfer.
     * status       - Status of the transfer, can be “completed”.
     * completed_at - Date the transfer was completed in ISO 8601 format.
