@@ -15,9 +15,11 @@ class Assets:
 class Balance:
     currency_code: str
     available: float
+    onhold: float
 
     def __post_init__(self) -> None:
         self.available = float(self.available)
+        self.onhold = float(self.onhold)
 
 
 @dataclass
